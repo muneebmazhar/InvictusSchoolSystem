@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SchoolErp.Models.Student_Record>
+    @{ 
+        Layout = "~/Views/Shared/Dashboard.cshtml";
+    }
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Record</title>
+
+   
+
+    <link rel="stylesheet" href="~/Table/css/style.css">
+
+</head>
+<body >
+    <section class="col-md-10 " style="margin-left:100px;" >
+        <!--for demo wrap-->
+        <h1>Student Record</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>F/Name</th>
+                        <th>DOB</th>
+                        <th>Roll #</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Admission Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="1">
+                <tbody>
+@foreach (var item in Model)
+{
+                    <tr>
+                        <td>@item.Stud_Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Father_Name</td>
+                        <td>@item.DOB</td>
+                        <td>@item.Roll_Number</td>
+                        <td>@item.Address</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Admission_Date</td>
+                        <td>
+                            @Html.ActionLink("Update", "UpdateStudent", new { id = item.Stud_Id }) 
+
+                            @Html.ActionLink("Remove", "RemoveStudent", new { id = item.Stud_Id })
+                        </td>
+                    </tr>
+}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- follow me template -->
+    
+   
+    <script src="~/Table/js/index.js"></script>
+</body>
+</html>
